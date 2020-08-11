@@ -120,7 +120,7 @@ def Sync(request):
 
 				r.views = video['views']
 				# r.thumbnail = video['thumbnail']
-				r.slug = video['slug']
+				# r.slug = video['slug']
 				r.save()
 			except Video.DoesNotExist:
 				# Creating the new video
