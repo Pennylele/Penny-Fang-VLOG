@@ -96,7 +96,8 @@ def Sync(request):
 						'description': description,
 						'title': title,
 						'date_posted': date_posted,
-						'thumbnail': thumbnail
+						'thumbnail': thumbnail,
+						'slug': vid_id
 					}
 				)
 
@@ -119,10 +120,11 @@ def Sync(request):
 
 				r.views = video['views']
 				# r.thumbnail = video['thumbnail']
+				r.slug = video['slug']
 				r.save()
 			except Video.DoesNotExist:
 				# Creating the new video
-				v = Video(video=video['url'], title=video['title'], date_posted=video['date_posted'], description=video['description'], views=video['views'], thumbnail=video['thumbnail'])
+				v = Video(video=video['url'], title=video['title'], date_posted=video['date_posted'], description=video['description'], views=video['views'], thumbnail=video['thumbnail'], slug=video['slug'])
 				v.save() 
 		
 		cxt['args'] = videos
