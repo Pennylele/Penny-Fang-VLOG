@@ -118,10 +118,11 @@ def Sync(request):
 				r = Video.objects.get(video=video['url'])
 
 				r.views = video['views']
+				r.thumbnail = Video['thumbnail']
 				r.save()
 			except Video.DoesNotExist:
 				# Creating the new video
-				v = Video(video=video['url'], title=video['title'], date_posted=video['date_posted'], description=video['description'], views=video['views'])
+				v = Video(video=video['url'], title=video['title'], date_posted=video['date_posted'], description=video['description'], views=video['views'], thumbnail=video['thumbnail'])
 				v.save() 
 		
 		cxt['args'] = videos
