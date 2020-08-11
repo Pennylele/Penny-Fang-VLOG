@@ -1,0 +1,12 @@
+{% extends 'youtube/base.html' %}
+{% load static %}
+{% block content %}
+	<form method="POST">
+		{% csrf_token %} 
+		<button class="btn btn-dark" type="submit" name="button">Sync</button>
+	</form>
+	<div class="container">
+	  <p>{{ args }}</p>
+	  <p>{{ args2 }}</p>
+	</div>
+{% endblock %}

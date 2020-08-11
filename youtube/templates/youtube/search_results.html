@@ -1,0 +1,12 @@
+{% extends 'youtube/base.html' %}
+{% load static %}
+{% block content %}
+	<p>Search results</p>
+	{% for video in video_list %}
+		<figure class="figure">
+			<img src="{{ video.thumbnail }}" class="figure-img img-fluid rounded">
+			<figcaption class="figure-caption" id="cp-title"><a href="{% url 'video_detail' slug=video.slug %}"><strong>{{ video.title|wordwrap:30|linebreaksbr|truncatechars:50 }}</strong></a></figcaption>
+			<figcaption class="figure-caption">{{ video.date_posted|slice:10}}   {{ video.views }} views</figcaption>
+		</figure>
+	{% endfor %}
+{% endblock %}

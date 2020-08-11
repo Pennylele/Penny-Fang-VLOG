@@ -1,0 +1,11 @@
+{% extends 'youtube/base.html' %}
+{% load static %}
+{% load embed_video_tags %}
+{% block content %}
+	<div class="jumbotron">
+	  {% video video.video "960x540" %}
+	  <p class="lead"><strong>{{ video.title }}</strong></p>
+	  <hr class="my-4">
+  	  <p>{{ video.description|linebreaks }}</p>
+	</div>
+{% endblock %}

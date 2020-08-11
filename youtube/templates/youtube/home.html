@@ -1,0 +1,26 @@
+{% extends 'youtube/base.html' %}
+{% load static %}
+{% block content %}
+<div class="input-group mb-3">
+	<form action="{% url 'search_results' %}" method="GET">
+		<input type="text" name="q" class="form-control" placeholder="Search..." aria-label="Recipient's username" aria-describedby="button-addon2">
+	</form>
+	<div class="dropdown" style="margin-left: 2em;">
+	  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		Sort by
+	  </button>
+	  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+		<a class="dropdown-item" href="{% url 'home' %}">Date</a>
+		<a class="dropdown-item" href="{% url 'sort_views' %}">Views</a>
+	  </div>
+	</div>
+</div>
+
+	{% for video in videos %}
+		<figure class="figure">
+			<img src="{{ video.thumbnail }}" class="figure-img img-fluid rounded">
+			<figcaption class="figure-caption" id="cp-title"><a href="{% url 'video_detail' slug=video.slug %}"><strong>{{ video.title|wordwrap:30|linebreaksbr|truncatechars:50 }}</strong></a></figcaption>
+			<figcaption class="figure-caption">{{ video.date_posted|slice:10}}   {{ video.views }} views</figcaption>
+		</figure>
+	{% endfor %}
+{% endblock %}
