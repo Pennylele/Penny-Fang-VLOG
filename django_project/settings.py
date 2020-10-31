@@ -122,7 +122,7 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # is gonna be the full path of a directory where we want Django to store our uploaded files. For performance reasons, the files are stored in the file system and not in the database. So the media_root is where the uploaded files will be saved. So for example, if our images are set up to be uploaded to the profile_pics folder, then the folder will be created in the media directory.
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 django_heroku.settings(locals())

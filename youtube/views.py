@@ -59,7 +59,7 @@ def Sync(request):
 			pl_request = youtube.playlistItems().list(
 				part='contentDetails, snippet',
 				playlistId=playlist_id,
-				maxResults=50,
+				maxResults=80,
 				pageToken=nextPageToken
 			)
 
@@ -115,7 +115,7 @@ def Sync(request):
 		# Updating the current views
 		for video in videos:
 			try:
-				Video.objects.get(video=video['url'])
+				# Video.objects.get(video=video['url'])
 				r = Video.objects.get(video=video['url'])
 
 				r.views = video['views']
